@@ -17,7 +17,7 @@ export function useLoginUser() {
   return useMutation({
     mutationFn: async ({ email, password }: AdminLoginPayload) => {
       try {
-        const response = await axiosAdmin.post("/warehouse/auth/deliveryhub/login", {
+        const response = await axiosAdmin.post("api/admin/login/", {
           email,
           password,
         })
