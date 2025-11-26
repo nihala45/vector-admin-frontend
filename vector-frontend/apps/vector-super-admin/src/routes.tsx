@@ -6,12 +6,17 @@ import Dashboard from "./pages/root/dashboard/page";
 import Login from "./pages/auth/Login";
 import Profile from "./pages/profile/page";
 import Error from "./pages/root/error-mangement/Error";
+import UserManagementListing from "./pages/root/user-management/user-management-list";
+import StaffManagementListing from "./pages/root/staff-managemenet/staff-management-list";
 
 // Route Config (cleaned)
 const routesConfig = [
   { path: "/", element: <Login />, title: "Login" },
   { path: "/dashboard", element: <Dashboard />, title: "Dashboard" },
   { path: "/profile", element: <Profile />, title: "Profile" },
+  { path: "/users", element: <UserManagementListing />, title: "users" },
+  { path: "/staff", element: <StaffManagementListing />, title: "staff" },
+
 
   // Error handlers
   { path: "/error", element: <Error />, title: "Error" },

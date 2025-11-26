@@ -24,7 +24,7 @@ axiosAdmin.interceptors.request.use(
       if (storage) {
         try {
           const parsed = JSON.parse(storage);
-          token = parsed?.state?.token ?? null;
+          token = parsed?.state?.access ?? null;
         } catch (err) {
           console.error("Failed to parse auth-storage:", err);
         }

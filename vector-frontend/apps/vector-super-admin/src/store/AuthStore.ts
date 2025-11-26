@@ -1,24 +1,36 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { IAdmin } from '../types/Admin'
 
 interface AuthState {
-	admin: IAdmin | null
-	token: string | null
-	setAdminData: (admin: IAdmin, token: string) => void
-	logout: () => void
+  admin: {
+    email: string
+    is_superuser: boolean
+  } | null
+  access: string | null
+  refresh: string | null
+  setAdminData: (
+    admin: { email: string; is_superuser: boolean },
+    access: string,
+    refresh: string,
+	 user_id: string | number
+  ) => void
+  logout: () => void
 }
 
 export const useAuthStore = create<AuthState>()(
-	persist(
-		set => ({
-			admin: null,
-			token: null,
-			setAdminData: (admin, token) => set({ admin, token }),
-			logout: () => set({ admin: null, token: null }),
-		}),
-		{
-			name: 'auth-storage',
-		}
-	)
+  persist(
+    set => ({
+      admin: null,
+      access: null,
+      refresh: null,
+
+      setAdminData: (admin, access, refresh) =>
+        set({ admin, access, refresh }),
+
+      logout: () => set({ admin: null, access: null, refresh: null }),
+    }),
+    {
+      name: 'auth-storage',
+    }
+  )
 )

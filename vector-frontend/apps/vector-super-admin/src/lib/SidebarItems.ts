@@ -1,4 +1,4 @@
-import { LayoutDashboard, UserCircle, AlertTriangle } from "lucide-react";
+import { LayoutDashboard, AlertTriangle, User } from "lucide-react";
 
 export const navigation = [
   {
@@ -6,13 +6,21 @@ export const navigation = [
     icon: LayoutDashboard,
     href: "/dashboard",
   },
-
   {
-    name: "Profile",
-    icon: UserCircle,
-    href: "/profile",
+    name: "Users",
+    icon: User,
+    href: "/users",
   },
-
+  {
+    name: "Staff",
+    icon: User,
+    href: "/staff",
+  },
+  {
+    name: "Courses",
+    icon: User,
+    href: "/courses",
+  },
   {
     name: "Error Page",
     icon: AlertTriangle,
