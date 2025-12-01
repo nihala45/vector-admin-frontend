@@ -4,11 +4,11 @@ import axios from "axios";
 // ----------------------------------------------------------------------
 
 
+// 
+export const AGENT_API = "http://127.0.0.1:8000/";
 
-// export const AGENT_API = "http://127.0.0.1:8000/";
 
-
-export const AGENT_API = 'https://vector-backend-8isl.onrender.com'
+// export const AGENT_API = 'https://vector-backend-8isl.onrender.com'
 
 
 const axiosAdmin = axios.create({

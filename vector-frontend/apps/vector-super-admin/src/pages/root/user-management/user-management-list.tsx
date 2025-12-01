@@ -184,9 +184,10 @@ export default function UserManagementListing() {
   const { data:users } = useGetUsers();
   console.log("User Data:", users);
 
-  // Correct Mapping Based on Your API
+  
+ const userList = Array.isArray(users) ? users : [];
  const mappedData: User[] =
-  users?.results?.map((u: any) => ({
+  userList?.map((u: any) => ({
     id: u.id,
     username: u.username,
     email: u.email,

@@ -29,6 +29,8 @@ import { Avatar, AvatarFallback } from "@repo/ui/components/avatar";
 
 import { useState } from "react";
 import { useAuthStore } from "../../../store/AuthStore";
+import { useNavigate } from "react-router";
+
 
 
 import { useBlockOrUnblockStaff } from "../../../apis/staff/Mutations";
@@ -146,6 +148,7 @@ const UserTableColumns = () => {
                     {user.status === "Active" ? "Block User" : "Unblock User"}
                   </Button>
                 </AlertDialogTrigger>
+                
 
                 <AlertDialogContent>
                   <AlertDialogHeader>
@@ -183,18 +186,25 @@ const UserTableColumns = () => {
 
 // ---------- Main Component ----------
 export default function StaffManagementListing() {
-  const { data:users } = useGetStaff();
-  console.log("User Data:", users);
+  const navigate = useNavigate();
 
-  // Correct Mapping Based on Your API
- const mappedData: User[] =
-  users?.results?.map((u: any) => ({
-    id: u.id,
-    username: u.username,
-    email: u.email,
-    phoneNumber: String(u.phone),
-    status: u.is_active ? "Active" : "Blocked",
-  })) ?? [];
+
+
+
+const { data: users } = useGetStaff();
+console.log("🔥 STAFF API RESPONSE:", users);
+
+const staffList = Array.isArray(users) ? users : [];
+
+const mappedData = staffList.map((u: any) => ({
+  id: u.id,
+  username: u.username,
+  email: u.email,
+  phoneNumber: String(u.phone),
+  status: u.is_active ? "Active" : "Blocked",
+}));
+
+
   return (
     <div className="bg-white">
       <div className="p-4 flex flex-col sm:flex-row justify-between items-center">
@@ -204,7 +214,11 @@ export default function StaffManagementListing() {
             Manage your users and their access status
           </p>
         </div>
+        <Button className="bg-violet-500" onClick={() => navigate('/staff/create')}>
+  Add New Staff
+</Button>
       </div>
+
 
       <CustomDataTable
         columns={UserTableColumns()}
