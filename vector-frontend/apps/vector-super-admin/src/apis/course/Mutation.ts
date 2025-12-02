@@ -22,13 +22,24 @@ export const useCreateCourse = () => {
 export const useUpdateCourse = (id:any) => {
   return useGenericMutation<any>({
      apiCall: (data) => {
-      return axiosAdmin.put(`/api/course/${id}`, data);
+      return axiosAdmin.put(`/api/course/${id}/`, data);
     },
     onSuccessMessage: "Course Updated Successfully",
     queryKeyToInvalidate: "getCourses",
-    redirectTo: "/course",
+    redirectTo: "/courses",
   });
 };
+
+export const useUpdateCourseStaff = (id:any) => {
+  return useGenericMutation<any>({
+     apiCall: (data) => {
+      return axiosAdmin.post(`/api/course/${id}/add-staff/`, data);
+    },
+    onSuccessMessage: "Staff Updated Successfully",
+    queryKeyToInvalidate: "getCourses",
+    // redirectTo: "/courses",
+  });
+}
 
 export const useDeleteCourseById = (id: any) => {
   return useGenericMutation<any>({

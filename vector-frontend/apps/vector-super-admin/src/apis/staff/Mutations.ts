@@ -39,6 +39,8 @@ export const useUpdateStaff = (id:any) => {
 };
 
 
+
+
 export const useDeleteStaff = () => {
   return useGenericMutation<any>({
     apiCall: (id) => axiosAdmin.delete(`/api/admin/staff/${id}`),

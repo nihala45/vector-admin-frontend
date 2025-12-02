@@ -16,3 +16,36 @@ export function useGetCourse() {
     },
   });
 }
+
+export function useGetSingleCourse(id: string | undefined) {
+  return useQuery({
+    queryKey: ['getSingleCourse', id],
+    queryFn: async () => {
+      try {
+        const response = await axiosAdmin.get(`/api/course/${id}/`);
+        return response?.data; 
+
+      } catch (error) {
+        console.log('err', error);
+        throw error;
+      } 
+    },
+    enabled: !!id, 
+  });
+}
+
+export function useGetCourseBySlug(slug: string | undefined) {
+  return useQuery({
+    queryKey: ['getCourseBySlug', slug],
+    queryFn: async () => {
+      try {
+        const response = await axiosAdmin.get(`/api/course/${slug}/`);
+        return response?.data;
+      } catch (error) {
+        console.log('err', error);
+        throw error;
+      }
+    },
+    enabled: !!slug,
+  });
+}
