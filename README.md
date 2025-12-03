@@ -1,7 +1,7 @@
 ﻿🚀 Turborepo with shadcn/ui Components
  A monorepo setup using Turborepo, Vite, Next.js, Tailwind CSS v4, and shadcn/ui components.
 
-✅ Prerequisites
+ Prerequisites
 
 Make sure the following are installed:
 
@@ -13,7 +13,7 @@ Check versions:
 
 node -v
 pnpm -v
-📥 Installation
+Installation
 
 Clone the repository:
 
@@ -24,25 +24,23 @@ cd your-repo
 Install dependencies:
 
 pnpm install
-
-🏗️ Build
+Build
 
 Build all apps and packages:
 
 pnpm build
-
-🎨 Add a New UI Component
+ Add a New UI Component
 
 Use shadcn/ui generator to add components to the shared ui package:
 
 pnpm ui card
-▶️ Run All Apps Together
+ Run All Apps Together
 
 Start all repos at once:
 
 pnpm run dev
 
-▶️ Run Apps Individually
+Run Apps Individually
 
 Run the admin app:
 
@@ -57,7 +55,7 @@ pnpm staff
 Run the user app (if exists):
 
 pnpm user
-🛠️ Tools Used
+Tools Used
 
 Turborepo (monorepo management)
 
@@ -70,3 +68,4 @@ Tailwind CSS v4
 shadcn/ui reusable components
 
 pnpm workspaces
+
